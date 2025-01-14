@@ -1,0 +1,6 @@
+@RedisClusterSample.AppHost_HostAddress = http://localhost:5188
+
+GET {{RedisClusterSample.AppHost_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

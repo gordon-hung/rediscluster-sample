@@ -6,4 +6,4 @@ Redis scales horizontally with a deployment topology called Redis Cluster. This 
 ```sh
 docker-compose up -d --build 
 ```
-![image](https://github.com/gordon-hung/opentelemetry-sample/blob/master/Images/Docker.png)
+![image](https://github.com/gordon-hung/rediscluster-sample/blob/master/Images/Docker.png)

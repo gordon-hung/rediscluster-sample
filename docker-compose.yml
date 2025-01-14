@@ -1,0 +1,110 @@
+---
+version: '3.4'
+services:
+  redis-node-0:
+    image: bitnami/redis-cluster:7.4
+    container_name: sample-redis-node-0
+    environment:
+    - REDIS_PASSWORD=1qaz2wsx
+    - REDISCLI_AUTH=1qaz2wsx
+    - REDIS_PORT_NUMBER=7000
+    - REDIS_CLUSTER_ANNOUNCE_HOSTNAME=localhost
+    - REDIS_CLUSTER_PREFERRED_ENDPOINT_TYPE=hostname
+    - REDIS_NODES=redis-node-0:7000 redis-node-1:7001 redis-node-2:7002 redis-node-3:7003
+      redis-node-4:7004 redis-node-5:7005
+    ports:
+    - 7000:7000
+    - 17000:17000
+    networks:
+    - sample-redis-nat
+  redis-node-1:
+    image: bitnami/redis-cluster:7.4
+    container_name: sample-redis-node-1
+    environment:
+    - REDIS_PASSWORD=1qaz2wsx
+    - REDISCLI_AUTH=1qaz2wsx
+    - REDIS_PORT_NUMBER=7001
+    - REDIS_CLUSTER_ANNOUNCE_HOSTNAME=localhost
+    - REDIS_CLUSTER_PREFERRED_ENDPOINT_TYPE=hostname
+    - REDIS_NODES=redis-node-0:7000 redis-node-1:7001 redis-node-2:7002 redis-node-3:7003
+      redis-node-4:7004 redis-node-5:7005
+    ports:
+    - 7001:7001
+    - 17001:17001
+    networks:
+    - sample-redis-nat
+  redis-node-2:
+    image: bitnami/redis-cluster:7.4
+    container_name: sample-redis-node-2
+    environment:
+    - REDIS_PASSWORD=1qaz2wsx
+    - REDISCLI_AUTH=1qaz2wsx
+    - REDIS_PORT_NUMBER=7002
+    - REDIS_CLUSTER_ANNOUNCE_HOSTNAME=localhost
+    - REDIS_CLUSTER_PREFERRED_ENDPOINT_TYPE=hostname
+    - REDIS_NODES=redis-node-0:7000 redis-node-1:7001 redis-node-2:7002 redis-node-3:7003
+      redis-node-4:7004 redis-node-5:7005
+    ports:
+    - 7002:7002
+    - 17002:17002
+    networks:
+    - sample-redis-nat
+  redis-node-3:
+    image: bitnami/redis-cluster:7.4
+    container_name: sample-redis-node-3
+    environment:
+    - REDIS_PASSWORD=1qaz2wsx
+    - REDISCLI_AUTH=1qaz2wsx
+    - REDIS_PORT_NUMBER=7003
+    - REDIS_CLUSTER_ANNOUNCE_HOSTNAME=localhost
+    - REDIS_CLUSTER_PREFERRED_ENDPOINT_TYPE=hostname
+    - REDIS_NODES=redis-node-0:7000 redis-node-1:7001 redis-node-2:7002 redis-node-3:7003
+      redis-node-4:7004 redis-node-5:7005
+    ports:
+    - 7003:7003
+    - 17003:17003
+    networks:
+    - sample-redis-nat
+  redis-node-4:
+    image: bitnami/redis-cluster:7.4
+    container_name: sample-redis-node-4
+    environment:
+    - REDIS_PASSWORD=1qaz2wsx
+    - REDISCLI_AUTH=1qaz2wsx
+    - REDIS_PORT_NUMBER=7004
+    - REDIS_CLUSTER_ANNOUNCE_HOSTNAME=localhost
+    - REDIS_CLUSTER_PREFERRED_ENDPOINT_TYPE=hostname
+    - REDIS_NODES=redis-node-0:7000 redis-node-1:7001 redis-node-2:7002 redis-node-3:7003
+      redis-node-4:7004 redis-node-5:7005
+    ports:
+    - 7004:7004
+    - 17004:17004
+    networks:
+    - sample-redis-nat
+  redis-node-5:
+    image: bitnami/redis-cluster:7.4
+    container_name: sample-redis-node-5
+    environment:
+    - REDIS_PASSWORD=1qaz2wsx
+    - REDISCLI_AUTH=1qaz2wsx
+    - REDIS_CLUSTER_REPLICAS=1
+    - REDIS_PORT_NUMBER=7005
+    - REDIS_CLUSTER_CREATOR=yes
+    - REDIS_CLUSTER_ANNOUNCE_HOSTNAME=localhost
+    - REDIS_CLUSTER_PREFERRED_ENDPOINT_TYPE=hostname
+    - REDIS_NODES=redis-node-0:7000 redis-node-1:7001 redis-node-2:7002 redis-node-3:7003
+      redis-node-4:7004 redis-node-5:7005
+    ports:
+    - 7005:7005
+    - 17005:17005
+    networks:
+    - sample-redis-nat
+    depends_on:
+    - redis-node-0
+    - redis-node-1
+    - redis-node-2
+    - redis-node-3
+    - redis-node-4
+networks:
+  sample-redis-nat:
+    driver: bridge
